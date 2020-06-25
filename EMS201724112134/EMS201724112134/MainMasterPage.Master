@@ -1,0 +1,116 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMasterPage.master.cs" Inherits="EMS201724112134.MainMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="js/jquery-3.5.0.slim.js"></script>
+     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/public.css" rel="stylesheet" />
+    <link href="css/menu.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+   
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3 custom-col-menu-left text-right">
+                <div class="custom-col-menu-center-content-dateinfo">
+                    <p>
+                        
+                        <asp:Button ID="Button1" runat="server" Text="退出" CssClass="form-control btn-default btn-danger custom-btn" Width="60" OnClick="Button1_Click"/>
+                    </p>
+                    <p>
+                        当前用户：<asp:Label ID="labAdmin" runat="server"></asp:Label>！
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 custom-col-menu-center">
+                <div class="custom-col-menu-center-content">
+                    <ul class="menu cf">
+	                    <li><a href="../loginDefault.aspx">首页</a></li>
+                       
+	                        <li>
+		                        <a>系统设置</a>
+		                        <ul class="submenu">
+			                        <li><a href="../changePassword.aspx">修改密码</a></li>
+			                        			                       
+		                        </ul>
+	                        </li>
+                         
+	                        <li>
+                                <a>设备信息</a>
+                                <ul class="submenu">
+                                     <li><a href="../EquipManage/ReadEqu.aspx">设备信息查询</a></li>
+
+                                        <% if(isAdmin) {%>
+                                    <li><a href="../EquipManage/SetEqu.aspx">设备信息管理</a></li> 
+                                   
+                                  
+			                         <%} %>
+			                       
+                                    
+		                        </ul>
+	                        </li>
+                      
+                            <%if (!isEmp){%>
+	                        <li>
+		                        <a>部门信息</a>
+		                        <ul class="submenu">
+                                    <li><a href="../DepartmentManage/ReadDep.aspx">部门信息查询</a></li>
+                                       <%if (isAdmin) {%>
+                                          
+			                       
+			                        
+                                    <li><a href="../DepartmentManage/SetDep.aspx">部门信息设置</a></li>
+                                    <%} %>
+		                        </ul>
+	                        </li>
+                            <%}%>
+                       
+                            <li>
+		                        <a>员工信息</a>
+		                        <ul class="submenu">
+                                     <li><a href="..//EmployeeManage/ReadEmp.aspx">员工信息查询</a></li>
+                                       <%if (isAdmin) {%>
+                                     <li><a href="..//EmployeeManage/SetEmp.aspx">员工信息设置</a></li>
+			                     
+                                    <%} %>
+                                  
+			                         
+                                    
+		                        </ul>
+	                        </li>
+                          
+                      
+                        
+                       
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 custom-col-menu-right">&nbsp;</div>
+        </div>
+        <div class="row custom-col-content">
+            <div class="col-sm-3 col-md-2">&nbsp;</div>
+            <div class="col-sm-6 col-md-6 ">                
+                <div class="custom-col-content-center">
+                    <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                    </asp:contentplaceholder>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-4">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 custom-col-foot-left">&nbsp;</div>
+            <div class="col-sm-6 col-md-6 custom-col-foot-center">&nbsp;  </div>
+            <div class="col-sm-3 col-md-3 custom-col-foot-right">&nbsp;</div>
+        </div>
+        </div>
+    </form>
+</body>
+</html>
